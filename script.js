@@ -538,41 +538,45 @@ function showAlternatives() {
   });
 }
 
-
 function setGreeting() {
+
   const greetingEl = document.getElementById("greetingText");
 
   const hours = new Date().getHours();
   let greeting = "";
 
-  if (hours >= 5 && hours < 12) {
-    greeting = "Good Morning";
-  } else if (hours >= 12 && hours < 17) {
-    greeting = "Good Afternoon";
-  } else if (hours >= 17 && hours < 21) {
-    greeting = "Good Evening";
-  } else {
-    greeting = "Good Night";
-  }
+  if (hours >= 5 && hours < 12) greeting = "Good Morning";
+  else if (hours >= 12 && hours < 17) greeting = "Good Afternoon";
+  else if (hours >= 17 && hours < 21) greeting = "Good Evening";
+  else greeting = "Good Night";
 
-  let userName;
 
-  while (true) {
-    userName = prompt("Enter your name");
+  let userName = localStorage.getItem("userName");
 
-    if (userName === null) {
-      alert("Name is required");
-      continue;
+
+  if (!userName) {
+
+    while (true) {
+
+      userName = prompt("Enter your name");
+
+      if (userName === null) continue;
+
+      userName = userName.trim();
+
+      const namePattern = /^[A-Za-z]+$/;
+
+      if (namePattern.test(userName)) break;
+
+      else alert("Please enter a valid name");
+
     }
 
-    userName = userName.trim();
-    const namePattern = /^[A-Za-z]+$/;
+    localStorage.setItem("userName", userName);
 
-    if (namePattern.test(userName)) break;
-    else alert("Please enter a valid name");
   }
 
-  greetingEl.innerHTML = `${greeting} <br /> ${userName}`;
+  greetingEl.innerHTML = `${greeting} <br> ${userName}`;
 }
 
 setGreeting();
