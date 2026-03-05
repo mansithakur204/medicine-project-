@@ -550,29 +550,16 @@ function setGreeting() {
   else if (hours >= 17 && hours < 21) greeting = "Good Evening";
   else greeting = "Good Night";
 
-
   let userName = localStorage.getItem("userName");
 
+  if (userName === null) {
 
-  if (!userName) {
+    userName = prompt("Enter your name");
 
-    while (true) {
-
-      userName = prompt("Enter your name");
-
-      if (userName === null) continue;
-
+    if (userName) {
       userName = userName.trim();
-
-      const namePattern = /^[A-Za-z]+$/;
-
-      if (namePattern.test(userName)) break;
-
-      else alert("Please enter a valid name");
-
+      localStorage.setItem("userName", userName);
     }
-
-    localStorage.setItem("userName", userName);
 
   }
 
