@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicine Finder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#home" class="logo-link">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2960/2960016.png"
+          alt="Medicine Logo"
+          class="logo-img"
+        />
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Me</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="home-page">
+        <section class="search-section">
+          <label>Medicine Name</label>
+
+          <div class="search-row">
+            <input type="text" id="search" oninput="filterProducts(event)" />
+            <button onclick="handleSearch()">Find Alternatives</button>
+          </div>
+
+          <div id="resultBox" class="hidden"></div>
+        </section>
+
+        <section class="text-section">
+          <div class="welcome-content">
+            <div class="welcome-text">
+              <h1 id="greetingText"></h1>
+
+              <p>
+                Search your medicine and find cheaper government-approved
+                alternatives. <br />Click on any medicine to visit the official
+                website. Easy and trusted service for everyone.
+              </p>
+            </div>
+
+            <img src="first.png" alt="Doctor illustration" />
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
